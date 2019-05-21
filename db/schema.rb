@@ -1,4 +1,6 @@
-ActiveRecord::Schema.define(version: 2019_05_21_201101) do
+
+
+ActiveRecord::Schema.define(version: 2019_05_21_225202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -10,6 +12,7 @@ ActiveRecord::Schema.define(version: 2019_05_21_201101) do
     t.datetime "updated_at", null: false
     t.bigint "doctor_id"
     t.bigint "user_id"
+    t.string "role"
     t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end
@@ -18,6 +21,7 @@ ActiveRecord::Schema.define(version: 2019_05_21_201101) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "type"
   end
 
   create_table "users", force: :cascade do |t|

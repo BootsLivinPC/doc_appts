@@ -1,2 +1,33 @@
-<h1>Appointments#index</h1>
-<p>Find me in app/views/appointments/index.html.erb</p>
+<h1><%= @doctor.name %></h1>
+<hr />
+<%= link_to 'Add Appointment', new_doctor_appointment_path(@doctor) %>
+<h2>General Practice</h2>
+<ul>
+  <% @generals.each do |general| %>
+    <li>
+      <%= general.doctor.full_name %>
+      <br />
+      <%= link_to 'Remove', doctor_appointment_path(@doctor, general), method: :delete %>
+    </li>
+  <% end %>
+</ul>
+<h2>Specialist</h2>
+<ul>
+  <% @specialists.each do |specialist| %>
+    <li>
+      <%= specialist.doctor.full_name %>
+      <br />
+      <%= link_to 'Remove', doctor_appointment_path(@doctor, specialist), method: :delete %>
+    </li>
+ <% end %>
+</ul>
+<h2>Allergies</h2>
+<ul>
+  <% @allergens.each do |allergen| %>
+    <li>
+      <%= allergen.doctor.full_name %>
+      <br />
+      <%= link_to 'Remove', doctor_appointment_path(@doctor, allergen), method: :delete %>
+   </li>
+ <% end %>
+</ul>

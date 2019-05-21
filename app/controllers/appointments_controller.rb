@@ -1,13 +1,39 @@
 class AppointmentsController < ApplicationController
-  def index
-  end
+  before_action :set_doctor
 
-  def show
+  def index
+    @generals = @doctor.appointments.where(role: 'general')
+    @specialists = @doctor.appointments.where(role: 'specialist')
+    @allergens = @doctor.appointments.where(role: 'allergen')
   end
 
   def new
+    @users = User.all - @doctor.users
+    @appointment = @doctor.appointments.new
   end
 
-  def edit
+  def create
+    @appointment = @doctor.appointments.new(appointment_params)
+    if @appointment.save
+      redirect_to doctor_appointments_path(@doctor)
+    else
+      render :new
+    end
   end
+
+  def destroy
+    @appointment = @doctor.appointments.find(params[:id])
+    @appointment.destroy
+    redirect_to doctor_appointments_path(@doctor)
+  end
+
+ private
+   def set_doctor
+     @doctor = Doctor.find(params[:doctor_id]) 
+   end
+
+   def appointment_params
+     params.require(:appointment).permit(:role, :user_id)
+   end
 end
+
