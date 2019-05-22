@@ -1,11 +1,13 @@
-<h1><%= @doctor.name %></h1>
+<h1>Dr. <%= @doctor.full_name %></h1>
 <hr />
 <%= link_to 'Add Appointment', new_doctor_appointment_path(@doctor) %>
 <h2>General Practice</h2>
+
 <ul>
   <% @generals.each do |general| %>
     <li>
-      <%= general.doctor.full_name %>
+      <%= general.doctor.full_name %> | 
+    
       <br />
       <%= link_to 'Remove', doctor_appointment_path(@doctor, general), method: :delete %>
     </li>

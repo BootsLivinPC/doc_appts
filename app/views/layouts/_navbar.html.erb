@@ -9,11 +9,11 @@
     <%= link_to 'New Doctor', new_doctor_path %>
   </div>
   <div class="ui item">
-    <%= link_to 'Appointments', doctor_appointments_path(@doctor) %>
+    <%= link_to 'Appointments', doctor_appointments_path(:doctor) %>
   </div>
   
     <div class="ui item">
-      <%= link_to 'New Appointment', new_doctor_appointment_path(@doctor) %>
+      <%= link_to 'New Appointment', new_doctor_appointment_path(:doctor) %>
     </div>
   
 </div>

@@ -1,4 +1,13 @@
 <h1>Welcome <%= current_user.full_name %></h1>
+<%= link_to 'Add Family Member', new_user_path %>
 <hr />
-
+<hr />
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <%= link_to user.full_name, user %>
+    </li>
+<% end %>
+</ul>
+<h4>UpComing Appointments</h4>
 <%= button_to "Log Out", destroy_user_session_path, method: :delete, class: "ui right floated blue button"%>

@@ -1,10 +1,13 @@
 <h1>Add Doctor</h1>
-<%= form_with(model: [@user, @appointment], local: true, class: "ui form" ) do |f| %>
-  <%= f.label :doctor %>
-  <%= f.select :doctor_id, @doctors.collect { |u| [u.full_name, u.id] } %>
+<%= form_with(model: @doctor, local: true, class: "ui form" ) do |f| %>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name, autofocus: true  %>
   <br />
-  <%= f.label :type %>
-  <%= f.select :type, ['general', 'allergen', 'specialist'] %>
+   <%= f.label :last_name_name %>
+  <%= f.text_field :last_name, autofocus: true  %>
+  <br />
+  <%= f.label :specialty %>
+  <%= f.select :specialty, ['General Practicioner', 'Ears, Nose, Throat', 'Family'] %>
   <br />
   <%= f.submit nil, class: "ui green button inverted" %>
 <% end %>
